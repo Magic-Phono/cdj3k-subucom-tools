@@ -1,6 +1,6 @@
 # cdj3k-subucom-tools
 
-This package contains the CDJ3K Subucom Utilities, version @VERSION@.
+This package contains the CDJ3K Subucom Utilities.
 
 Copyright (c) 2025 Magic Phono Development Team <xorbxbx@magicphono.org>
 
@@ -15,11 +15,11 @@ subucom controller from the main SoC of the AlphaTheta CDJ-3000 player.
 
 The utilities include:
 
-  - subucom_blink: blinks the LEDs continously, useful for testing.
+  - `subucom_blink`: blinks the LEDs continously, useful for testing.
 
-  - subucom_check: checks for magic key press combo and writes output to file.
+  - `subucom_check`: checks for magic key press combo and writes output to file.
 
-  - subucom_dump: reads subucom controller state and dumps to the screen
+  - `subucom_dump`: reads subucom controller state and dumps to the screen
     continously.
 
   - subucom_uinput: userspace application that reads subucom controller
@@ -40,8 +40,12 @@ initialized before building.
 
 To build, run:
 
+```
   ./do_build.sh
+```
 
 The repo can be cleaned by running:
 
+```
   make distclean
+```
