@@ -22,7 +22,7 @@ The utilities include:
   - `subucom_dump`: reads subucom controller state and dumps to the screen
     continously.
 
-  - subucom_uinput: userspace application that reads subucom controller
+  - `subucom_uinput`: userspace application that reads subucom controller
     state and emits events to an uinput virtual input device.
 
 ## 2. What's subucom?
@@ -49,3 +49,46 @@ The repo can be cleaned by running:
 ```
   make distclean
 ```
+
+
+## 4. Documentation 
+
+### Reading from subucom (Buttons)
+
+#### CRC
+
+The last two bytes (byte 62-63, 0-indexed) contain a CRC-16/X-25 checksum of the preceeding 62 bytes of data.
+
+<img src="doc/subucom-input-crc.svg" style="max-width: 100%" />
+
+#### Data
+
+<img src="doc/subucom-input.svg" style="max-width: 100%" />
+
+<p>
+<sup>1</sup> These keys are exclusive with one another.<br />
+<sup>2</sup> These keys are exclusive with one another.<br />
+<sup>3</sup> These keys are exclusive with one another.<br />
+<sup>4</sup> These keys are exclusive with one another.<br />
+<sup>5</sup> These keys are exclusive with one another.
+</p>
+
+
+### Writing to subucom (LEDs)
+
+#### CRC
+
+The last two bytes (byte 62-63, 0-indexed) contain a CRC-16/X-25 checksum of the preceeding 62 bytes of data.
+
+<img src="doc/subucom-output-crc.svg" style="max-width: 100%" />
+
+#### Data<
+
+<img src="doc/subucom-output.svg" style="max-width: 100%" />
+
+<p>
+<sup>1</sup> Dim/bright control. <code>00</code> - off, <code>01</code> - dim (10%), <code>10</code> - bright (100%), <code>11</code> - bright (100%).<br />
+<sup>2</sup> Dim/bright control. <code>00</code> - off, <code>01</code> - dim (10%), <code>10</code> - off, <code>11</code> - bright (100%).<br />
+<sup>3</sup> Affects TRACK_REV, TRACK_FWD, SEARCH_REV, SEARCH_FWD, MEMORY_CUE_REV and MEMORY_CUE_FWD LEDs.<br />
+<sup>4</sup> R, G, B LEDs have 8 levels of brightness, where each bit increases the brightness level. <code>00000000</code> - off, <code>11111111</code> - 100% brightness.<br />
+</p>
