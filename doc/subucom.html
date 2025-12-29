@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>CDJ3K subucom</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,300..800;1,300..800&family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<i>DRAFT</i>
+
+<h1>CDJ3K subucom</h1>
+
+<h2>What's that?</h2>
+
+<p>
+Subucom (aka SUB MICROCOMputer) is a dedicated microcontroller in the CDJ that manages the buttons and controls on the player,
+including the jog wheel, touchscreen and LEDs. It is connected to the Main SoC via an SPI interface.
+</p>
+
+<p>
+It is exposed in Linux as character device <code>/dev/subucom_spi2.0</code>.
+</p>
+
+<h2>Code</h2>
+
+<p>
+See <a href="https://github.com/magic-phono/cdj3k-subucom-tools">cdj3k-subucom-tools</a> repository.
+</p>
+
+<h2>SPI Interface</h2>
+
+CDJ3K main processor interacts .
+Data is sent and received in 64-byte messages.
+
+<h3>Reading from subucom (Buttons)</h3>
+
+<h4>CRC</h4>
+
+<p>The last two bytes (byte 62-63, 0-indexed) contain a CRC-16/X-25 checksum of the preceeding 62 bytes of data.</p>
+
+<img src="subucom-input-crc.svg" style="max-width: 100%" />
+
+<h4>Data</h4>
+
+<img src="subucom-input.svg" style="max-width: 100%" />
+
+
+<p>
+<sup>1</sup> These keys are exclusive with one another.<br />
+<sup>2</sup> These keys are exclusive with one another.<br />
+<sup>3</sup> These keys are exclusive with one another.<br />
+<sup>4</sup> These keys are exclusive with one another.<br />
+<sup>5</sup> These keys are exclusive with one another.
+</p>
+
+
+<h3>Writing to subucom (LEDs)</h3>
+
+<h4>CRC</h4>
+
+<p>The last two bytes (byte 62-63, 0-indexed) contain a CRC-16/X-25 checksum of the preceeding 62 bytes of data.</p>
+
+<img src="subucom-output-crc.svg" style="max-width: 100%" />
+
+<h4>Data</h4>
+
+<img src="subucom-output.svg" style="max-width: 100%" />
+
+<p>
+<sup>1</sup> Dim/bright control. <code>00</code> - off, <code>01</code> - dim (10%), <code>10</code> - bright (100%), <code>11</code> - bright (100%).<br />
+<sup>2</sup> Dim/bright control. <code>00</code> - off, <code>01</code> - dim (10%), <code>10</code> - off, <code>11</code> - bright (100%).<br />
+<sup>3</sup> Affects TRACK_REV, TRACK_FWD, SEARCH_REV, SEARCH_FWD, MEMORY_CUE_REV and MEMORY_CUE_FWD LEDs.<br />
+<sup>4</sup> R, G, B LEDs have 8 levels of brightness, where each bit increases the brightness level. <code>00000000</code> - off, <code>11111111</code> - 100% brightness.<br />
+</p>
+
+</div>
+
+</body>
+
+</html>
