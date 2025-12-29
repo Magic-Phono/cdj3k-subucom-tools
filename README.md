@@ -31,11 +31,11 @@ Subucom (aka SUB MICROCOMputer) is a dedicated microcontroller in the CDJ that
 manages the buttons and controls on the player, including the jog wheel,
 touchscreen and LEDs. It is connected to the Main SoC via an SPI interface.
 
-For protocol information, see docs.
+For protocol information, see Documentation section below.
 
 ## 3. Building
 
-Install the cdj3k-toolchain and make sure the poky/oe environment is
+Install the <a href="https://github.com/Magic-Phono/cdj3k-toolchain">cdj3k-toolchain</a> and make sure the poky/oe environment is
 initialized before building.
 
 To build, run:
