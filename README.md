@@ -35,8 +35,9 @@ For protocol information, see Documentation section below.
 
 ## 3. Building
 
-Install the <a href="https://github.com/Magic-Phono/cdj3k-toolchain">cdj3k-toolchain</a> and make sure the poky/oe environment is
-initialized before building.
+Build and install the cross-compile and SDK from
+<a href="https://github.com/Magic-Phono/cdj3k-magicphono-distro">MagicPhono Linux</a>
+and make sure the magicphono/oe environment is initialized before building.
 
 To build, run:
 
