@@ -52,12 +52,12 @@ typedef struct subucom {
 #define SUBUCOM_IOC_RD_TIMER_INTERVAL	_IOR(SUBUCOM_IOC_MAGIC, 2, __u32)
 #define SUBUCOM_IOC_WR_TIMER_INTERVAL	_IOW(SUBUCOM_IOC_MAGIC, 2, __u32)
 
-#define SUBUCOM_MSGSIZE(N) \
-	((((N)*(sizeof (struct subucom_ioc_transfer))) < (1 << _IOC_SIZEBITS)) \
-	? ((N)*(sizeof (struct subucom_ioc_transfer))) : 0)
+// #define SUBUCOM_MSGSIZE(N) \
+// 	((((N)*(sizeof (struct subucom_ioc_transfer))) < (1 << _IOC_SIZEBITS)) \
+// 	? ((N)*(sizeof (struct subucom_ioc_transfer))) : 0)
 
-/* Transmit Tx message */
-#define SUBUCOM_IOC_MESSAGE(N)	_IOW(SUBUCOM_IOC_MAGIC, 0, char[SUBUCOM_MSGSIZE(N)])
+// /* Transmit Tx message */
+// #define SUBUCOM_IOC_MESSAGE(N)	_IOW(SUBUCOM_IOC_MAGIC, 0, char[SUBUCOM_MSGSIZE(N)])
 
 #define SUBUCOM_IOC_TEST	_IOW(SUBUCOM_IOC_MAGIC, 0, __u8)
 

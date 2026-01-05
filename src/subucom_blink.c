@@ -157,7 +157,6 @@ int main(int argc, char *argv[]) {
         
 
         buf_idx++;
-        subucom_ioctl_write(&subucom);
         usleep(500000);
     }
 
@@ -166,11 +165,4 @@ int main(int argc, char *argv[]) {
     subucom_deinit(&subucom);
 
     return 0;
-}
-
-int subucom_ioctl_write(subucom_t* subucom)
-{
-    int val = 0x10;
-    ioctl(subucom->fd, SUBUCOM_IOC_MESSAGE, &val);
-    return val;      
 }
