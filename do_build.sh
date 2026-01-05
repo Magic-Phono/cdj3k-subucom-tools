@@ -1,8 +1,8 @@
 #!/bin/sh
 
-ARCH=aarch64-poky-linux
-BUILD_ARCH=x86_64-pokysdk-linux
-SDK_BASE=/opt/poky/2.1.3
+ARCH=aarch64-magicphono-linux
+BUILD_ARCH=x86_64-magicphonosdk-linux
+SDK_BASE=/opt/magicphono/1.0.0
 SYSROOT_BASE=${SDK_BASE}/sysroots
 SYSROOT=${SYSROOT_BASE}/${ARCH}
 BUILD_SYSROOT=${SYSROOT_BASE}/${BUILD_ARCH}
@@ -19,7 +19,7 @@ CFLAGS="${CMN_ARGS}"; export CFLAGS
 CXXFLAGS="${CMN_ARGS}"; export CXXFLAGS
 LDFLAGS="${CMN_ARGS} ${LD_OPT_ARGS} -Wl,--hash-style=gnu -Wl,--as-needed "; export LDFLAGS
 
-. /opt/poky/2.1.3/environment-setup-aarch64-poky-linux
+. /opt/magicphono/1.0.0/environment-setup-aarch64-magicphono-linux
 
 ./configure \
 	--prefix=${PREFIX}	\
