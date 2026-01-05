@@ -17,7 +17,6 @@
 #include "lib/uinput.h"
 #include "lib/subucom.h"
 #include "lib/keymap.h"
-#include "lib/doom_keymap.h"
 
 #include <linux/input.h>
 #include <linux/uinput.h>
