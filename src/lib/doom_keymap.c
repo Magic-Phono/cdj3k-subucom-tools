@@ -107,6 +107,40 @@ int keymap_register_uinput_keycodes(keymap_t* keymap, int uinput_fd) {
         }
     }
 
+    for (int i=0 ; i<keymap->num_slip_states ; i++) {
+        uint32_t keycode = keymap->slip_states[i].keycode;
+        if (keycode != 0) {
+            ioctl(uinput_fd, UI_SET_KEYBIT, keycode);
+            count++;
+        }
+    }
+
+    for (int i=0 ; i<keymap->num_encoders ; i++) {
+        uint32_t left_keycode = keymap->encoders[i].left_keycode;
+        if (left_keycode != 0) {
+            ioctl(uinput_fd, UI_SET_KEYBIT, left_keycode);
+            count++;
+        }
+        uint32_t right_keycode = keymap->encoders[i].right_keycode;
+        if (right_keycode != 0) {
+            ioctl(uinput_fd, UI_SET_KEYBIT, right_keycode);
+            count++;
+        }
+    }
+
+    for (int i=0 ; i<keymap->num_jogs ; i++) {
+        uint32_t left_keycode = keymap->jogs[i].left_keycode;
+        if (left_keycode != 0) {
+            ioctl(uinput_fd, UI_SET_KEYBIT, left_keycode);
+            count++;
+        }
+        uint32_t right_keycode = keymap->jogs[i].right_keycode;
+        if (right_keycode != 0) {
+            ioctl(uinput_fd, UI_SET_KEYBIT, right_keycode);
+            count++;
+        }
+    }
+
     return count;
 }
 

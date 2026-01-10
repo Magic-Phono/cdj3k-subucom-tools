@@ -133,7 +133,7 @@ static void read_jog(subucom_t* subucom, const uint8_t *buffer, const uint8_t *p
     const uint8_t PRESS = (1 << 1);
 
     uint8_t num_jogs = subucom->_keymap->num_jogs;
-    for (int i; i<num_jogs; i++) {
+    for (int i=0; i<num_jogs; i++) {
         jog_def_t jog = subucom->_keymap->jogs[i];
 
         uint8_t moving = buffer[jog.byte] & MOVING;
@@ -193,7 +193,7 @@ static void read_jog(subucom_t* subucom, const uint8_t *buffer, const uint8_t *p
 
 static void read_selectors(subucom_t* subucom, const uint8_t *buffer, const uint8_t *prev_buffer) {
     uint8_t num_selectors = subucom->_keymap->num_selectors;
-    for (int i; i<num_selectors; i++) {
+    for (int i=0; i<num_selectors; i++) {
         selector_def_t selector = subucom->_keymap->selectors[i];
         selector_state_t *states = selector.states;
 
@@ -224,7 +224,7 @@ static void read_selectors(subucom_t* subucom, const uint8_t *buffer, const uint
 
 static void read_buttons(subucom_t* subucom, const uint8_t *buffer, const uint8_t *prev_buffer) {
     uint8_t num_buttons = subucom->_keymap->num_buttons;
-    for (int i; i<num_buttons; i++) {
+    for (int i=0; i<num_buttons; i++) {
         button_def_t button = subucom->_keymap->buttons[i];
 
         uint8_t button_state = buffer[button.byte] & button.bit;
@@ -250,7 +250,7 @@ static void read_buttons(subucom_t* subucom, const uint8_t *buffer, const uint8_
 
 static void read_encoders(subucom_t* subucom, const uint8_t *buffer, const uint8_t *prev_buffer) {
     uint8_t num_encoders = subucom->_keymap->num_encoders;
-    for (int i; i<num_encoders; i++) {
+    for (int i=0; i<num_encoders; i++) {
         encoder_def_t encoder = subucom->_keymap->encoders[i];
 
         int16_t encoder_value = be16_to_cpu_unsigned(buffer[encoder.byte], buffer[encoder.byte + 1]);
